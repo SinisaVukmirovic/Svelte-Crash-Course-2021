@@ -4,6 +4,9 @@
     import Card from './Card.svelte';
     export let item;
 
+    // when our data is in top level component
+    // we need to dispatch that event up to the component
+    // that stores our data, then we can change them
     const dispatch = createEventDispatcher();
 
     const handleDelete = (itemId) => {
@@ -15,6 +18,9 @@
     <div class="num-display">
         {item.rating}
     </div>
+
+    <!-- when calling functions with arguments in it -->
+    <!-- we first need to call a function with ()=> that then calls that function -->
     <button on:click={() => handleDelete(item.id)} class="close">&#10060;</button>
     <div class="text-display">
         {item.text}

@@ -30,6 +30,7 @@ const deleteFeedback = (e) => {
 </script>
 	
 <main class="container">
+                  <!-- catching the dispatched event with equal function -->
 	<FeedbackList {feedback} on:delete-feedback={deleteFeedback} />
 </main>
 

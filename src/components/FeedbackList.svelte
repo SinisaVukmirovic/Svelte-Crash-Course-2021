@@ -4,5 +4,6 @@
 </script>
 
 {#each feedback as fb (fb.id)}
+                    <!-- forwarding dispatch event to the above compoents -->
     <FeedbackItem item={fb} on:delete-feedback />
 {/each}
