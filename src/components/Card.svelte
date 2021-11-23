@@ -6,7 +6,7 @@
     .card {
         background-color: whitesmoke;
         color: #333;
-        padding: 1rem;
+        padding: 1rem 3rem;
         margin: 1rem;
         position: relative;
     }
