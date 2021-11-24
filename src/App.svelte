@@ -1,4 +1,5 @@
 <script>
+	import FeedbackForm from './components/FeedbackForm.svelte';
 	import FeedbackList from './components/FeedbackList.svelte';
 	import FeedbackStats from './components/FeedbackStats.svelte';
 
@@ -34,11 +35,12 @@ $: average = feedback.reduce((a, {rating}) => a + rating, 0) / count;
 </script>
 	
 <main class="container">
+  <FeedbackForm />
   <FeedbackStats {count} {average} />
                   <!-- catching the dispatched event with equal function -->
 	<FeedbackList {feedback} on:delete-feedback={deleteFeedback} />
 </main>
 
 <style>
-	
+
 </style>
