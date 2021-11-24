@@ -1,5 +1,6 @@
 <script>
 	import FeedbackList from './components/FeedbackList.svelte';
+	import FeedbackStats from './components/FeedbackStats.svelte';
 
   // if we are not using stores, our data should be stored in a top level component
   // which is app.svelte
@@ -27,9 +28,13 @@ const deleteFeedback = (e) => {
   // that pass the test implemented by the provided function.
   feedback = feedback.filter(item => item.id != itemId);
 }
+
+$: count = feedback.length;
+$: average = feedback.reduce((a, {rating}) => a + rating, 0) / count;
 </script>
 	
 <main class="container">
+  <FeedbackStats {count} {average} />
                   <!-- catching the dispatched event with equal function -->
 	<FeedbackList {feedback} on:delete-feedback={deleteFeedback} />
 </main>
