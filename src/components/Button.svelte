@@ -33,6 +33,7 @@
       background-color: #cccccc;
       color: #333;
       cursor:auto;
+      cursor: not-allowed;
     }
     button:disabled:hover{
       transform:scale(1);
