@@ -1,4 +1,7 @@
 <script>
+    // external module for unique ID creation
+    import { v4 as uuidv4 } from 'uuid';
+
     import Card from './Card.svelte';
     import Button from './Button.svelte';
     import RatingSelect from './RatingSelect.svelte';
@@ -20,13 +23,26 @@
         btnDisabled = false;
       }
     }
+
+    const handleSubmit = () => {
+      if (text.trim().length > minChars) {
+        const newFeedback = {
+          id: uuidv4(),
+          text,
+          // adding + before var to turn it into a number instead of a(default) string
+          rating: +rating
+        }
+
+        console.log(newFeedback);
+      }
+    }
 </script>
 
 <Card>
     <header>
         <h2>How would you rate your service with us?</h2>
     </header>
-    <form>
+    <form on:submit|preventDefault={handleSubmit}>
         <RatingSelect on:rating-select={handleSelect} />
         <div class="input-group">
             <input type="text" on:input={handleInput} bind:value={text} placeholder="Tell us something that keeps you coming back">
