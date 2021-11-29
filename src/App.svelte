@@ -23,6 +23,12 @@
   },
 ];
 
+const addFeedback = (e) => {
+  const newFeedback = e.detail;
+
+  feedback = [newFeedback, ...feedback];
+}
+
 const deleteFeedback = (e) => {
   const itemId = e.detail;
   // The filter() method creates a new array with all elements 
@@ -32,10 +38,11 @@ const deleteFeedback = (e) => {
 
 $: count = feedback.length;
 $: average = feedback.reduce((a, {rating}) => a + rating, 0) / count;
+
 </script>
 	
 <main class="container">
-  <FeedbackForm />
+  <FeedbackForm on:add-feedback={addFeedback} />
   <FeedbackStats {count} {average} />
                   <!-- catching the dispatched event with equal function -->
 	<FeedbackList {feedback} on:delete-feedback={deleteFeedback} />

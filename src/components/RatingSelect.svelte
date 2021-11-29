@@ -1,9 +1,9 @@
 <script>
     import { createEventDispatcher } from 'svelte';
 
-    let selected = 10;
+    const dispatch = createEventDispatcher();
 
-    let dispatch = createEventDispatcher();
+    let selected = 10;
 
     const onChange = (e) => {
         selected = e.currentTarget.value;
