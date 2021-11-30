@@ -1,13 +1,18 @@
 <script>
     // external module for unique ID creation
     import { v4 as uuidv4 } from 'uuid';
-    import { createEventDispatcher } from 'svelte';
+
+    import { FeedbackStore } from '../stores';
+
+    // import { createEventDispatcher } from 'svelte';
+    // commenting out for store solution
 
     import Card from './Card.svelte';
     import Button from './Button.svelte';
     import RatingSelect from './RatingSelect.svelte';
 
-    const dispatch = createEventDispatcher(); 
+    // const dispatch = createEventDispatcher(); 
+    // commenting out for store solution
 
     let text = '';
     let rating = 10;
@@ -36,7 +41,12 @@
           rating: +rating
         }
 
-        dispatch('add-feedback', newFeedback);
+        // dispatch('add-feedback', newFeedback);
+        // commenting out for store solution
+
+        FeedbackStore.update(currentFeedback => {
+          return [newFeedback, ...currentFeedback];
+        });
 
         text = '';
         document.querySelector('#text-input').focus();
