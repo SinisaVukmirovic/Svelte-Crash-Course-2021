@@ -1,5 +1,7 @@
 <script>
-    import { createEventDispatcher } from 'svelte';
+    // import { createEventDispatcher } from 'svelte';
+    // commenting out for solution with store
+    import { FeedbackStore } from '../stores';
 
     import Card from './Card.svelte';
     export let item;
@@ -7,10 +9,16 @@
     // when our data is in top level component
     // we need to dispatch that event up to the component
     // that stores our data, then we can change them
-    const dispatch = createEventDispatcher();
+    // const dispatch = createEventDispatcher();
 
+    // const handleDelete = (itemId) => {
+    //     dispatch('delete-feedback', itemId);
+    // }
+    // solution using store
     const handleDelete = (itemId) => {
-        dispatch('delete-feedback', itemId);
+        FeedbackStore.update(currentFeedback => {
+            return currentFeedback.filter(item => item.id != itemId);
+        });
     }
 </script>
 
@@ -18,7 +26,6 @@
     <div class="num-display">
         {item.rating}
     </div>
-
     <!-- when calling functions with arguments in it -->
     <!-- we first need to call a function with ()=> that then calls that function -->
     <button on:click={() => handleDelete(item.id)} class="close">&#10060;</button>

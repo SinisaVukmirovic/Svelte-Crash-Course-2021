@@ -13,6 +13,6 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 1rem;
+        padding: 1rem 5rem;
     }
 </style>
