@@ -11,7 +11,7 @@
 
 <div class="feedback-ratings">
     <h4>{count} {count === 1 ? 'rating!' : 'ratings!'}</h4>
-    <h4>Average ratings: {average}</h4>
+    <h4>Average ratings: {average.toFixed(2)}</h4>
 </div>
 
 <style>
